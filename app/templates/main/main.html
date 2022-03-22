@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>U-MTS</title>
+<meta name="description" content="">
+<meta name="author" content="">
+
+<link type="text/css" href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+<link type="text/css" href="{{url_for('static', filename='css/bootstrap.css')}}" rel="stylesheet">
+<link type="text/css" href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <script src="https://kit.fontawesome.com/7886f4aa11.js" crossorigin="anonymous"></script>
+
+</head>
+{% block content %}
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<!-- Navigation
+    ==========================================-->
+<nav id="menu" class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand page-scroll" href="#page-top">U-МТS</a> </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#about" class="page-scroll">О нас</a></li>
+        <li><a href="#services" class="page-scroll">Услуги</a></li>
+        <li><a href="#portfolio" class="page-scroll">Оборудование</a></li>
+        <li><a href="#contact" class="page-scroll">Контакты</a></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>
+<!-- Header -->
+<header id="header">
+  <div class="intro">
+    <div class="overlay">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 intro-text">
+            <h1>ЮГРА-МЕДТЕХСЕРВИС</h1>
+            <p>Продажа и техническое обслуживание медицинского оборудования.</p>
+            <a href="#about" class="btns">Подробнее</a> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- About Section -->
+<div id="about">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+        <div class="about-text">
+          <h2>Кто такие <span>U-МТS</span></h2>
+          <hr>
+          <p>Югра-МедТехСервис»  занимается техническим обслуживанием и ремонтом медицинского оборудования, а так же экспертной оценкой состояния медицинской техники с 2008 года.
+          Наши специалисты имеют многолоетний опыт работы с разными типами медицинской техники и инструментов.</p>
+          <a href="#services" class="btn btn-custom btn-lg page-scroll">Наши услуги</a> </div>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <div class="about-media"> <img src="{{ url_for('static', filename='media/lic.png')}}" /> </div>
+        <div class="about-desc">
+          <h3>Лицензии и сертификаты</h3>
+          <p>Компания имеет соответсвующую лицензию на осуществление деятельности по обслуживанию и производству медицинской техники, а так же все необходимые сертификаты и допуски у каждого сотрудника.</p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <div class="about-media"> <img src="{{ url_for('static', filename='media/cli.png')}}" /> </div>
+        <div class="about-desc">
+          <h3>Клиенты</h3>
+          <p>Наши клиенты это: бюджетные медицинские учреждения ХМАО и ЯНАО, частные клиники(стоматологии, центры медицинской эстетики, клиники широкого профиля) </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Services Section -->
+<div id="services">
+  <div class="container">
+    <div class="col-md-10 col-md-offset-1 section-title text-center">
+      <h2>Наши услуги</h2>
+      <hr>
+      <p>Услуги по ремонту и обслуживанию оказываются только юридическим лицам и бюджетным учреждениям.</p>
+    </div>
+    <div class="row">
+      <div class="col-md-3 text-center">
+        <div class="service-media"> <img src="{{ url_for('static', filename='media/12.png')}}" /> </div>
+        <div class="service-desc">
+          <h3>Ремонт оборудования</h3>
+          <p>Принимаем заявку и планируем выезд для последующей диагностики неисправностей в ваше медучреждение в удобное для вас время. </p>
+        </div>
+      </div>
+      <div class="col-md-3 text-center">
+        <div class="service-media"> <img src="{{ url_for('static', filename='media/13.jpg')}}" /> </div>
+        <div class="service-desc">
+          <h3>Экспертная оценка состояния медицинского оборудования</h3>
+          <p>Рано или поздно встает вопрос о списании оборудования и покупки нового, либо возникают разногласия с обслуживающей организацией по качеству выполненнных работ,
+            мы и тут поможем. У нас есть специалисты с соответсвующей лицензией для проведение диагностики
+            и составления необходимых документов для списания оборудрвания и участия в комиссии по решение спорных ситуаций. </p>
+        </div>
+      </div>
+      <div class="col-md-3 text-center">
+        <div class="service-media"> <img src="{{ url_for('static', filename='media/14.jpg')}}"/> </div>
+        <div class="service-desc">
+          <h3>Комплексное годовое сервисное обслуживание</h3>
+          <p>В данную услугу входит: периодическое обязательное ТО оборудования в соответсвии указаниям производителя,
+            устранение неисправностей, помощь в поиске и покупке запчастей, настройка ПО, консультации при выборе оборудования.</p>
+        </div>
+      </div>
+      <div class="col-md-3 text-center">
+        <div class="service-media"> <img src="{{ url_for('static', filename='media/2.jpg')}}" alt=" "> </div>
+        <div class="service-desc">
+          <h3>Продажа Б/У оборудования</h3>
+          <p>Нередко у нас появляются хорошие предложения по покупке Б/У оборудования. Вся техника проходит тщательную диагностику нашими специалистами и выставляется на продажу.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Gallery Section -->
+<div id="portfolio" >
+<!--  <div class="col-md-10 col-md-offset-1 section-title text-center">-->
+<!--      <h2>Медицинское оборудование</h2>-->
+<!--      <hr>-->
+<!--    </div>-->
+  {% for p in product %}
+      {% for im in im %}
+   {% if p.id == im.prod_id %}
+  <div class="product-wrap">
+  <div class="product-image">
+    <img src="{{url_for('download_file', name=im.img)}}"  />
+    <div class="shadow"></div>
+    <div class="actions">
+      <div class="actions-btn">
+        <div class="add-to-cart">
+          <a class="add-to-cart-button" href="#contact" title="Для покупки оставьте заявку либо позвоните по указанному номеру"></a>
+        </div>
+        <div class="add-to-links">
+          <div class="add-to-wishlist">
+            <a class="add-to-wishlist-button" href="/item/{{p.id}}" title="Подробнее о товаре"></a>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="product-list">
+    <h3><a href="/item/{{p.id}}">{{p.name}}</a></h3>
+    <div class="price">{{p.price}} руб</div>
+  </div>
+</div>
+    {% endif %}
+  {% endfor%}
+   {% endfor %}
+</div>
+
+  </div>
+</div>
+<!-- Testimonials Section -->
+<div id="testimonials" class="text-center">
+  <div class="overlay" >
+    <div class="container" >
+      <div class="section-title">
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div id="testimonial" class="owl-carousel owl-theme">
+
+              <p>Представленное оборудование проходит полную техническую диагностику перед выставлением на продажу.</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Contact Section -->
+<div id="contact" class="text-center">
+  <div class="container">
+    <div class="section-title text-center">
+      <h2>Связаться с нами</h2>
+      <hr>
+    </div>
+    <div class="col-md-10 col-md-offset-1 contact-info">
+      <div class="col-md-4">
+        <h3>Адрес</h3>
+        <hr>
+        <div class="contact-item">
+          <p>г. Сургут, ул. Аэрофлотская 5, офис 3.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3>Часы работы:</h3>
+        <hr>
+        <div class="contact-item">
+          <p>Понедельник-Пятница: 09:00 - 18:00</p>
+          <p>Суб/Вс: Закрыто</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3>Телефон</h3>
+        <hr>
+        <div class="contact-item">
+          <p>Телефон: +7 922 254 8449, +7 922 254 2981</p>
+          <p>Email: u-mts@mail.ru</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 col-md-offset-2">
+      <h3>Оставить заявку</h3>
+      <form action="" method="post" name="sentMessage" id="contactForm" novalidate enctype="multipart/form-data">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" id="name" class="form-control" name="customer" placeholder="Ваше имя" required="required">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="email" id="email" class="form-control"  name="email" placeholder="Ваш Email" required="required">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" id="phone" class="form-control"  name="phone" placeholder="Телефон для связи" required="required">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <textarea  id="text" class="form-control" name="text"  placeholder="Сообщение" required="required"></textarea>
+          <p class="help-block text-danger"></p>
+        </div>
+        <div id="success"></div>
+        <button type="submit" class="btn btn-custom btn-lg">Отправить</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+<!-- Footer Section -->
+<footer id="footer" class="footer-1">
+<div class="main-footer widgets-dark typo-light">
+<div class="container">
+<div class="row">
+
+<div class="col-xs-12 col-sm-6 col-md-3">
+<div class="widget subscribe no-box">
+<h5 class="widget-title">Югра-МедТехСервис<span></span></h5>
+<p>Техническое обслуживание медицинского оборудования </p>
+  <a class="btn" href="/loginadm">Работникам</a>
+</div>
+</div>
+
+<div class="col-xs-12 col-sm-6 col-md-3">
+<div class="widget no-box">
+<ul class="thumbnail-widget">
+</ul>
+</div>
+</div>
+
+<div class="col-xs-12 col-sm-6 col-md-3">
+<div class="widget no-box">
+<h5 class="widget-title">Годовое обслуживание<span></span></h5>
+<p>Вы можете оставить заявку на годовое обслуживание.
+Для этого, на указанную почту отправьте список единиц  техники и контактные данные.</p>
+</div>
+</div>
+
+<div class="col-xs-12 col-sm-6 col-md-3">
+
+<div class="widget no-box">
+<h5 class="widget-title">Пишите нам:<span></span></h5>
+
+<p><a title="glorythemes">u-mts@mail.ru</a></p>
+  <p><a  title="glorythemes">ugramts@list.ru</a></p>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="footer-copyright">
+<div class="container">
+<div class="row">
+<div class="col-md-12 text-center">
+<p>Copyright U-MTS © 2022. All rights reserved.</p>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script type="text/javascript" src="js/jquery.1.11.1.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/SmoothScroll.js"></script>
+<script type="text/javascript" src="js/nivo-lightbox.js"></script>
+<script type="text/javascript" src="js/jquery.isotope.js"></script>
+<script type="text/javascript" src="js/owl.carousel.js"></script>
+<script type="text/javascript" src="js/jqBootstrapValidation.js"></script>
+<script type="text/javascript" src="js/contact_me.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+</body>
+</html>

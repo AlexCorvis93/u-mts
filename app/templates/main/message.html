@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" href="{{url_for('static', filename='css/admin.css')}}" rel="stylesheet">
+</head>
+<body>
+<div class="col-md-8 col-md-offset-0">
+<ol class="zebra">
+  <li><p>ФИО: {{message.customer}}</p>
+      <p>Почта: {{message.email}}</p>
+      <p>Тел: {{message.phone}}</p>
+      <p>Описание: {{message.text}}</p>
+      <p>Дата: {{message.date}}</p>
+  </li>
+</ol>
+    </div>
+</body>
+</html>

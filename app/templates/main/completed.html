@@ -1,0 +1,31 @@
+{% extends 'main/admin.html' %}
+
+<body>
+{% block content %}
+<nav>
+    <h3>Панель администратора </h3>
+    <ul id="equip">
+    <li><a href="/admin">Назад</a></li>
+    </ul>
+</nav>
+
+    <h2>Выполненные заявки:</h2>
+ <hr class="hr-horizontal-gradient" >
+{% for p in prop %}
+<div class="col-md-8 col-md-offset-0">
+<ol class="zebra">
+  <li><p>ФИО: {{p.customer}}</p>
+      <p>Почта: {{p.email}}</p>
+      <p>Тел: {{p.phone}}</p>
+      <p>Описание: {{p.text}}</p>
+      <p>Дата: {{p.date}}</p>
+      <form method="POST" action="/delete_completed/{{p.id}}" >
+    <input type="submit" class="btns first" value="Удалить заявку">
+      </form>
+  </li>
+</ol>
+</div>
+{% endfor %}
+{% endblock %}
+</body>
+</html>

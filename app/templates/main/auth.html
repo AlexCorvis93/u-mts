@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Auth</title>
+    <link type="text/css" href="{{url_for('static', filename='css/auth.css')}}" rel="stylesheet">
+</head>
+<body>
+{% block content %}
+
+<div class="login-page">
+    {% with messages = get_flashed_messages() %}
+{% if messages %}
+    <div class="">
+        {{ messages[0] }}
+    </div>
+{% endif %}
+{% endwith %}
+  <div class="form">
+    <form action="" method="post" class="login-form" >
+      <input type="text" name="login" placeholder="login" required/>
+      <input type="password" name="pswd" placeholder="password" required/>
+      <button type="submit">login</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+</body>
+</html>
+
+
+

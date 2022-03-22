@@ -1,0 +1,63 @@
+{% extends 'main/admin.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+{% block nav %}
+{% for m in menu %}
+    <nav>
+<h3>Панель администратора </h3>
+    <ul id="equip">
+    <li><a href="{{ url_for(m.url) }}">{{m.title}}</a></li>
+    <li><a href="/">Страница сайта</a></li>
+         <li><a href="/admin">Назад</a></li>
+    </ul>
+</nav>
+{% endfor %}
+{% endblock %}
+{% block content %}
+<div class="img">
+ {% if img %}
+        <img src="{{img}}" height="400" width="460"/>
+       {% endif %}
+    </div>
+<div class="col-md-8 col-md-offset-2">
+<form action="" method="post" name="sentMessage" id="contactForm" novalidate enctype="multipart/form-data">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" id="name" class="form-control" name="name" value="{{item.name}}" required="required">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="number"  class="form-control"  name="price"  size="6" min="1" max="999999" value="{{item.price}}" required="required">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+            <div class="col-md-6">
+            <div class="form-group">
+              <input type="file"  name="picture"  placeholder="Новое фото товара" >
+              <p class="help-block text-danger"></p>
+            </div>
+            </div>
+        </div>
+        <div class="form-group">
+          <input  type="text" class="form-control" name="description"  value="{{item.description}}" required="required">
+        </div>
+        <div id="success"></div>
+        <button type="submit" class="btn btn-custom btn-lg">Опубликовать</button>
+      </form>
+
+
+<form method="POST" action="/delete/{{item.id}}" >
+    <input type="submit" class="btns first" value="Удалить объявление">
+</form>
+
+    </div>
+
+{% endblock %}
+</body>
+</html>

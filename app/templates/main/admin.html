@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADMIN</title>
+    <link type="text/css" href="{{url_for('static', filename='css/admin.css')}}" rel="stylesheet">
+    <link type="text/css" href="{{url_for('static', filename='css/bootstrap.css')}}" rel="stylesheet">
+<link type="text/css" href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+</head>
+<body>
+{% block nav %}
+{% for m in menu %}
+    <nav>
+<h3>Панель администратора </h3>
+    <ul id="equip">
+    <li><a href="{{ url_for(m.url) }}">{{m.title}}</a></li>
+    <li><a href="/">Страница сайта</a></li>
+        <li><a href="/completed">Выполненные заявки</a></li>
+        <li><a href="/equipment">Добавить объявление</a></li>
+    </ul>
+</nav>
+{% endfor %}
+{% endblock %}
+{% block content %}
+<h3>Список оборудования:</h3>
+{% for item in item %}
+<div class="col-md-8 col-md-offset-0">
+    <ul class="border">
+        <li><a href="/update/{{item.id}}">{{item.name}}</a></li>
+</ul>
+</div>
+{% endfor %}
+<div id="about">
+
+    <h2>Текущие заявки:</h2>
+     <hr class="hr-horizontal-gradient" >
+{% for p in prop %}
+    <div class="col-md-8 col-md-offset-0">
+<ol class="zebra">
+  <li><p>ФИО: {{p.customer}}</p>
+      <p>Почта: {{p.email}}</p>
+      <p>Тел: {{p.phone}}</p>
+      <p>Описание: {{p.text}}</p>
+      <p>Дата: {{p.date}}</p>
+      <form method="POST" action="/delete_proposal/{{p.id}}" >
+    <input type="submit" class="btns first" value="Удалить заявку">
+</form>
+      <form method="POST" action="/add_complete/{{p.id}}" >
+    <input type="submit" class="btns second" value="Добавить в отработанные">
+</form>
+
+
+  </li>
+</ol>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}
+</body>
+</html>

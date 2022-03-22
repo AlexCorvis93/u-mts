@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tutorial</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+      <link type="text/css" href="{{url_for('static', filename='css/item.css')}}" rel="stylesheet">
+    <!-- CSS -->
+
+    <meta name="robots" content="noindex,follow" />
+
+  </head>
+
+  <body>
+      <p><a href="/" class="gradient-button">На главную</a></p>
+    <main class="container">
+      <!-- Left Column / Headphones Image -->
+        {% if img %}
+      <div class="left-column">
+        <img src="{{img}}" />
+      </div>
+       {% endif %}
+
+      <!-- Right Column -->
+      <div class="right-column">
+        <!-- Product Description -->
+        <div class="product-description">
+          <span>Название</span>
+          <h1>{{item.name}}</h1>
+          <p>{{item.description}}</p>
+        </div>
+
+        <!-- Product Configuration -->
+
+
+        <!-- Product Pricing -->
+        <div class="product-price">
+          <span>{{item.price}}</span>
+          <a href="/#contact" class="gradient-button">Связаться с продавцом</a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
+    <script src="script.js" charset="utf-8"></script>
+  </body>
+</html>
