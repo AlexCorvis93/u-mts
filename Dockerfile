@@ -1,7 +1,5 @@
 FROM tiangolo/uwsgi-nginx-flask:python3.8
-
 WORKDIR /u-mts
-
 COPY ./requirements.txt /u-mts
 RUN pip install -r requirements.txt
 
@@ -13,3 +11,4 @@ ENV STATIC_PATH /u-mts/app/static
 
 COPY . /u-mts
 EXPOSE 5000
+

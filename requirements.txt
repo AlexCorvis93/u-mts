@@ -33,3 +33,4 @@ SQLAlchemy-ImageAttach==1.1.0
 urllib3==1.26.8
 Wand==0.6.7
 Werkzeug==2.0.3
+gunicorn==20.0.4

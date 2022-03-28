@@ -1,7 +1,11 @@
 from app import app, images, Message, mail
 from .models import Proposal, db, Product, ProductImage, CompletedProposal
 from flask import render_template, request, redirect, url_for, send_from_directory, session
+from .admin_session import LoginAdmin
 import os
+
+log = LoginAdmin()# класс для работы с сессией админа
+menu = [{'url': 'logout_admin', 'title': 'Выход'}]
 
 
 def random_str(length=32):
@@ -15,42 +19,16 @@ def download_file(name):
     return send_from_directory(app.config["UPLOADED_IMAGES_DEST"], name)
 
 
-def login_admin():
-    """if admin login"""
-    session['admin_logged'] = 1
-
-
-def is_logged():
-    """if admin in session"""
-    return True if session.get("admin_logged") else False
-
-
-def logout():
-    """if admin is logout"""
-    session.pop('admin_logged', None)
-
-
 @app.route('/loginadm', methods=['POST', 'GET'])
 def auth():
-    if is_logged():
+    """вход в панель администратора"""
+    if log.is_logged():
         return redirect(url_for('admin'))
     if request.method == 'POST':
         if request.form['login'] == os.environ['LOGIN'] and request.form['pswd'] == os.environ['PASSWORD']:
-            login_admin()
+            log.login_admin()
             return redirect(url_for('admin'))
     return render_template('main/auth.html')
-
-
-menu = [{'url': 'logout_admin', 'title': 'Выход'}]
-
-
-# def feedback():
-#     customer = request.form.get('customer')
-#     email = request.form.get('email')
-#     msg = Message('Feedback', sender=email, recipients=[app.config['MAIL_USERNAME']])
-#     msg.body = "You have received a new feedback from {} <{}>.".format(customer, email)
-#     with app.app_context():
-#         mail.send(msg)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -66,11 +44,11 @@ def index():
         try:
             new_message = Proposal(customer=customer, email=email, phone=phone, text=text)
             db.session.add(new_message)
-            db.session.commit()
-            msg = Message('Feedback', sender=new_message.email, recipients=[app.config['MAIL_USERNAME']])
+            db.session.commit() # добавление изменений в бд
+            msg = Message('Feedback', sender=new_message.email, recipients=[app.config['MAIL_USERNAME']]) #отправка заявки на рабочую почту
             msg.html = render_template('main/message.html', message=new_message)
             mail.send(msg)
-            return redirect(url_for('thanks'))  # добавление изменений в бд
+            return redirect(url_for('thanks')) #страница спасибо
         except:
             db.session.rollback()  # откат бд до первоначального состояния
             print('Error add into DB')
@@ -90,7 +68,7 @@ def item_detail(product_id):
 
 @app.route('/equipment', methods=['GET', 'POST'])
 def equipment():
-    if not is_logged():
+    if not log.is_logged():
         return redirect(url_for('auth'))
     """Новое объявление о продаже медтехники"""
     name = request.form.get('name')
@@ -118,7 +96,7 @@ def equipment():
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
-    if not is_logged():
+    if not log.is_logged():
         return redirect(url_for('auth'))
     item = Product.query.all()
     proposal = Proposal.query.all()
@@ -128,7 +106,7 @@ def admin():
 @app.route('/update/<int:product_id>', methods=['GET', 'POST'])
 def update_item(product_id):
     """Страница редактирования постов"""
-    if not is_logged():
+    if not log.is_logged():
         return redirect(url_for('auth'))
     item = db.session.query(Product).filter_by(id=product_id).one()
     item_img = db.session.query(ProductImage).filter_by(prod_id=item.id).one()
@@ -167,7 +145,7 @@ def delete_item(product_id):
 
 @app.route('/logout', methods=['POST', 'GET'])
 def logout_admin():
-    if not logout():
+    if not log.logout():
         return redirect(url_for('index'))
 
 

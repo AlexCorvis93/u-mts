@@ -23,6 +23,7 @@
 {% endblock %}
 {% block content %}
 <h3>Список оборудования:</h3>
+<div class="col-md-8 col-md-offset-0">
 {% for item in item %}
 <div class="col-md-8 col-md-offset-0">
     <ul class="border">
@@ -30,8 +31,10 @@
 </ul>
 </div>
 {% endfor %}
-<div id="about">
+</div>
 
+<div class="col-md-8 col-md-offset-0">
+<div id="about">
     <h2>Текущие заявки:</h2>
      <hr class="hr-horizontal-gradient" >
 {% for p in prop %}
@@ -48,12 +51,11 @@
       <form method="POST" action="/add_complete/{{p.id}}" >
     <input type="submit" class="btns second" value="Добавить в отработанные">
 </form>
-
-
   </li>
 </ol>
     </div>
 {% endfor %}
+</div>
 </div>
 {% endblock %}
 </body>
